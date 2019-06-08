@@ -1,3 +1,6 @@
+const canvas = document.querySelector('#graph');
+const ctx = canvas.getContext('2d');
+
 const inputs = tf.randomUniform([10]);
 const outputs = inputs.square();
 
