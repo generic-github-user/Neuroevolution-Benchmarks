@@ -56,8 +56,17 @@ a.forEach(
 	}
 )
 
-var n = neataptic
+var n = neataptic;
 var neat_network = new neataptic.Network(1, 1);
+var neat_options = {
+  mutation: n.methods.mutation.ALL,
+  mutationRate: 1,
+  clear: true,
+  cost: n.methods.cost.MSE,
+  iterations: 1,
+  log: 1,
+  iterations: 1
+};
 
 const tf_network = tf.sequential();
 tf_network.add(tf.layers.dense({units: 5, inputShape: [1], activation: 'relu'}));
