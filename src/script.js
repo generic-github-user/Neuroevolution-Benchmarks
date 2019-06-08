@@ -89,8 +89,11 @@ tf_network.compile({optimizer: 'sgd', loss: 'meanSquaredError'});
 		  batchSize: 5,
 		  epochs: 1
 	  });
+	  const r = await neat_network.evolve(b, neat_options);
+	  
 	  console.log("Loss after Epoch " + i + " : " + h.history.loss[0]);
 	  labels.push(i);
+	  neat_losses.push(r.error);
 	  tf_losses.push(h.history.loss[0]);
 	  console.log(h.history.loss)
 	  graph.update();
