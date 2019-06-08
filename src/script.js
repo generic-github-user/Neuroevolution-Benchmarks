@@ -17,6 +17,20 @@ const graph = new Chart(ctx, {
 		}]
 	},
 	options: {
+		scales: {
+			xAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Epoch'
+				}
+			}],
+			yAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Loss'
+				}
+			}]
+		}, 
 		animation: {
 			duration: 0 // general animation time
 		},
