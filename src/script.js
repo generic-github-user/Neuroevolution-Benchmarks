@@ -2,6 +2,7 @@ const canvas = document.querySelector('#graph');
 const ctx = canvas.getContext('2d');
 
 var labels = [];
+var neat_losses = [];
 var tf_losses = [];
 /* tf_losses = [5, 6, 2, 4]; */
 /* r = [[5, 6], [2, 4]]; */
@@ -9,12 +10,20 @@ const graph = new Chart(ctx, {
 	type: 'line',
 	data: {
 		labels: labels,
-		datasets: [{
-			label: 'My First dataset',
-			backgroundColor: 'rgb(255, 99, 132)',
-			borderColor: 'rgb(255, 99, 132)',
-			data: tf_losses
-		}]
+		datasets: [
+			{
+				label: 'TensorFlow.js',
+				backgroundColor: 'rgb(255, 99, 132)',
+				borderColor: 'rgb(255, 99, 132)',
+				data: tf_losses
+			},
+			{
+				label: 'NEAT',
+				backgroundColor: 'rgb(96, 157, 255)',
+				borderColor: 'rgb(96, 157, 255)',
+				data: neat_losses
+			}
+		]
 	},
 	options: {
 		scales: {
