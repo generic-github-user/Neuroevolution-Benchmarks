@@ -1,6 +1,32 @@
 const canvas = document.querySelector('#graph');
 const ctx = canvas.getContext('2d');
 
+var labels = [];
+var tf_losses = [];
+/* tf_losses = [5, 6, 2, 4]; */
+/* r = [[5, 6], [2, 4]]; */
+const graph = new Chart(ctx, {
+	type: 'line',
+	data: {
+		labels: labels,
+		datasets: [{
+			label: 'My First dataset',
+			backgroundColor: 'rgb(255, 99, 132)',
+			borderColor: 'rgb(255, 99, 132)',
+			data: tf_losses
+		}]
+	},
+	options: {
+		animation: {
+			duration: 0 // general animation time
+		},
+		hover: {
+			animationDuration: 0 // duration of animations when hovering an item
+		},
+		responsiveAnimationDuration: 0 // animation duration after a resize
+	}
+});
+
 const inputs = tf.randomUniform([10]);
 const outputs = inputs.square();
 
@@ -12,8 +38,6 @@ tf_network.add(tf.layers.dense({units: 5, inputShape: [1], activation: 'relu'}))
 tf_network.add(tf.layers.dense({units: 1}));
 
 tf_network.compile({optimizer: 'sgd', loss: 'meanSquaredError'});
-var labels = [];
-var tf_losses = [];
 (async () => {
 	for (let i = 0; i < 10; ++i) {
 	  const h = await tf_network.fit(inputs, outputs, {
@@ -24,32 +48,6 @@ var tf_losses = [];
 	  labels.push(i);
 	  tf_losses.push(h.history.loss[0]);
 	  console.log(h.history.loss)
+	  graph.update();
 	}
-})().then(
-	() => {
-		/* tf_losses = [5, 6, 2, 4]; */
-		/* r = [[5, 6], [2, 4]]; */
-		const graph = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: labels,
-				datasets: [{
-					label: 'My First dataset',
-					backgroundColor: 'rgb(255, 99, 132)',
-					borderColor: 'rgb(255, 99, 132)',
-					data: tf_losses
-				}]
-			},
-			options: {
-				animation: {
-					duration: 0 // general animation time
-				},
-				hover: {
-					animationDuration: 0 // duration of animations when hovering an item
-				},
-				responsiveAnimationDuration: 0 // animation duration after a resize
-			}
-		});
-		graph.update();
-	}
-)
+})();
