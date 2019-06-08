@@ -1,3 +1,6 @@
+const inputs = tf.randomUniform([10]);
+const outputs = inputs.square();
+
 var n = neataptic
 var neat_network = new neataptic.Network(1, 1);
 
