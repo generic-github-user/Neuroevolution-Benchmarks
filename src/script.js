@@ -25,4 +25,31 @@ var tf_losses = [];
 	  tf_losses.push(h.history.loss[0]);
 	  console.log(h.history.loss)
 	}
-})();
+})().then(
+	() => {
+		/* tf_losses = [5, 6, 2, 4]; */
+		/* r = [[5, 6], [2, 4]]; */
+		const graph = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: labels,
+				datasets: [{
+					label: 'My First dataset',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: tf_losses
+				}]
+			},
+			options: {
+				animation: {
+					duration: 0 // general animation time
+				},
+				hover: {
+					animationDuration: 0 // duration of animations when hovering an item
+				},
+				responsiveAnimationDuration: 0 // animation duration after a resize
+			}
+		});
+		graph.update();
+	}
+)
