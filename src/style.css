@@ -1,4 +1,11 @@
 #graph-container {
-	width: 50%;
+	width: 49%;
 	height: 50%;
+	display: inline-block;
+}
+
+.draw {
+	width: 49%;
+	height: 50%;
+	display: inline-block;
 }
