@@ -41,7 +41,12 @@ const graph = new Chart(ctx, {
 					labelString: 'Loss'
 				}
 			}]
-		}, 
+		},
+		elements: {
+			point:{
+				radius: 0
+			}
+		},
 		animation: {
 			duration: 0
 		},
