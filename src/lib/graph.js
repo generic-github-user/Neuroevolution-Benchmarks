@@ -1,10 +1,10 @@
 var NODE_RADIUS = 7;
 var GATE_RADIUS = 2;
 var REPEL_FORCE = 0;
-var LINK_DISTANCE = 10;
+var LINK_DISTANCE = 5;
 
-var WIDTH = 1000;
-var HEIGHT = 1000;
+var WIDTH = 500;
+var HEIGHT = 500;
 
 function drawGraph (graph, panel) {
   var d3cola = cola.d3adaptor()

@@ -81,7 +81,7 @@ tf_network.compile({optimizer: tf_optimizer, loss: 'meanSquaredError'});
 
 
 (async () => {
-	for (let i = 0; i < 10; ++i) {
+	for (let i = 0; i < 100; ++i) {
 	  const h = await tf_network.fit(inputs, outputs, {
 		  batchSize: 5,
 		  epochs: 1
@@ -96,6 +96,8 @@ tf_network.compile({optimizer: tf_optimizer, loss: 'meanSquaredError'});
 	  console.log(r.evolved)
 	  console.log(h.history.loss)
 	  graph.update();
+	  // wait for page load
+	  // use this or width/height values in graph.js
 	  drawGraph(neat_network.graph(500, 500), '.draw');
 	}
 	console.log(r)
