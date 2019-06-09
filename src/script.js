@@ -13,13 +13,11 @@ const graph = new Chart(ctx, {
 		datasets: [
 			{
 				label: 'TensorFlow.js',
-				backgroundColor: 'rgb(255, 99, 132)',
 				borderColor: 'rgb(255, 99, 132)',
 				data: tf_losses
 			},
 			{
 				label: 'NEAT',
-				backgroundColor: 'rgb(96, 157, 255)',
 				borderColor: 'rgb(96, 157, 255)',
 				data: neat_losses
 			}
