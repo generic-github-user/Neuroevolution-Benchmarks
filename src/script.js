@@ -39,12 +39,12 @@ const graph = new Chart(ctx, {
 			}]
 		}, 
 		animation: {
-			duration: 0 // general animation time
+			duration: 0
 		},
 		hover: {
-			animationDuration: 0 // duration of animations when hovering an item
+			animationDuration: 0
 		},
-		responsiveAnimationDuration: 0 // animation duration after a resize
+		responsiveAnimationDuration: 0
 	}
 });
 
