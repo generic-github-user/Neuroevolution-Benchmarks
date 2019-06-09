@@ -58,7 +58,7 @@ const graph = new Chart(ctx, {
 });
 
 const inputs = tf.randomUniform([10], -10, 10);
-const outputs = inputs.square();
+const outputs = inputs.pow(2);
 
 var a = inputs.dataSync();
 b = [];
@@ -76,7 +76,9 @@ var n = neataptic;
 var neat_network = new neataptic.Network(1, 1);
 var neat_options = {
   mutation: n.methods.mutation.ALL,
-  mutationRate: 1,
+  /* mutation: [n.methods.mutation.MOD_BIAS, n.methods.mutation.ADD_NODE], */
+  /* mutation: [n.methods.mutation.ADD_NODE], */
+  mutationRate: 100,
   clear: true,
   cost: n.methods.cost.MAE,
   iterations: 2
@@ -85,14 +87,14 @@ var neat_options = {
 const tf_network = tf.sequential();
 tf_network.add(tf.layers.dense({units: 5, inputShape: [1], activation: 'relu'}));
 tf_network.add(tf.layers.dense({units: 1}));
-const tf_optimizer = tf.train.sgd(0.0001);
+const tf_optimizer = tf.train.adam(0.1);
 tf_network.compile({optimizer: tf_optimizer, loss: 'meanAbsoluteError'});
 
 
 (async () => {
-	for (let i = 0; i < 100; ++i) {
+	for (let i = 0; i < 500; ++i) {
 	  const h = await tf_network.fit(inputs, outputs, {
-		  batchSize: 5,
+		  batchSize: 10,
 		  epochs: 1
 	  });
 	  r = await neat_network.evolve(b, neat_options);
