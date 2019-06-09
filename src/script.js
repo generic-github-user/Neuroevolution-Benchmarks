@@ -48,7 +48,7 @@ const graph = new Chart(ctx, {
 	}
 });
 
-const inputs = tf.randomUniform([10]);
+const inputs = tf.randomUniform([10], -10, 10);
 const outputs = inputs.square();
 
 var a = inputs.dataSync();
@@ -76,7 +76,8 @@ var neat_options = {
 const tf_network = tf.sequential();
 tf_network.add(tf.layers.dense({units: 5, inputShape: [1], activation: 'relu'}));
 tf_network.add(tf.layers.dense({units: 1}));
-tf_network.compile({optimizer: 'sgd', loss: 'meanSquaredError'});
+const tf_optimizer = tf.train.sgd(0.0001);
+tf_network.compile({optimizer: tf_optimizer, loss: 'meanSquaredError'});
 
 
 (async () => {
