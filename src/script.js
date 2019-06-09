@@ -95,6 +95,7 @@ tf_network.compile({optimizer: 'sgd', loss: 'meanSquaredError'});
 	  console.log(r.evolved)
 	  console.log(h.history.loss)
 	  graph.update();
+	  drawGraph(neat_network.graph(500, 500), '.draw');
 	}
 	console.log(r)
 })();
