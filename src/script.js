@@ -70,9 +70,7 @@ var neat_options = {
   mutationRate: 1,
   clear: true,
   cost: n.methods.cost.MSE,
-  iterations: 1,
-  log: 1,
-  iterations: 1
+  iterations: 2
 };
 
 const tf_network = tf.sequential();
