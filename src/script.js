@@ -69,7 +69,7 @@ var neat_options = {
   mutation: n.methods.mutation.ALL,
   mutationRate: 1,
   clear: true,
-  cost: n.methods.cost.MSE,
+  cost: n.methods.cost.MAE,
   iterations: 2
 };
 
@@ -77,7 +77,7 @@ const tf_network = tf.sequential();
 tf_network.add(tf.layers.dense({units: 5, inputShape: [1], activation: 'relu'}));
 tf_network.add(tf.layers.dense({units: 1}));
 const tf_optimizer = tf.train.sgd(0.0001);
-tf_network.compile({optimizer: tf_optimizer, loss: 'meanSquaredError'});
+tf_network.compile({optimizer: tf_optimizer, loss: 'meanAbsoluteError'});
 
 
 (async () => {
