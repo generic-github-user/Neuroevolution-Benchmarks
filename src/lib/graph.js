@@ -1,7 +1,7 @@
-var NODE_RADIUS = 7;
+var NODE_RADIUS = 20;
 var GATE_RADIUS = 2;
 var REPEL_FORCE = 0;
-var LINK_DISTANCE = 5;
+var LINK_DISTANCE = 20;
 
 var WIDTH = 500;
 var HEIGHT = 500;
@@ -33,7 +33,7 @@ function drawGraph (graph, panel) {
   d3cola
     .nodes(graph.nodes)
     .links(graph.links)
-    .constraints(graph.constraints)
+    .constraints(graph.constraints) //
     .symmetricDiffLinkLengths(REPEL_FORCE)
     .linkDistance(LINK_DISTANCE)
     .start(10, 15, 20);
