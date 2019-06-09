@@ -24,6 +24,10 @@ const graph = new Chart(ctx, {
 		]
 	},
 	options: {
+		title: {
+            display: true,
+            text: 'Learning Method Comparison'
+        },
 		scales: {
 			xAxes: [{
 				scaleLabel: {
