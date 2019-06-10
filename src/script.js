@@ -60,17 +60,13 @@ const graph = new Chart(ctx, {
 const inputs = tf.randomUniform([10], -10, 10);
 const outputs = inputs.pow(2);
 
-var a = inputs.dataSync();
-b = [];
-// replace this with map?
-a.forEach(
-	(c) => {
-		b.push({
-			input: [c],
-			output: [c ** 2]
-		})
-	}
-)
+// Convert tensors for TFJS training to Neataptic training data
+b = new Array(...inputs.dataSync()).map(
+	c => ({
+		input: [c],
+		output: [c ** 2]
+	})
+);
 
 var n = neataptic;
 var neat_network = new neataptic.Network(1, 1);
